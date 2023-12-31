@@ -40,31 +40,37 @@ export default function Room() {
       socket.on("get-players", (msg) => {
         //get players
         //setPlayers(msg);
+        console.log("here 2");
       });
 
       socket.on("get-chat", (msg) => {
         setChat((prev) => [...prev, msg]);
+        console.log("here 3");
       });
 
       socket.on("get-cartela", (msg) => {
         //get player raffled numbers
         setCartela(msg);
+        console.log("here 4");
       });
 
       socket.on("get-raffleds", (msg) => {
         //get raffled balls
         setRaffleds(msg);
+        console.log("here 5");
       });
 
       socket.on("start-game", () => {
         //start game
         setPath("play-room");
+        console.log("here 6");
       });
 
       socket.on("get-bingo", (msg) => {
         //bingo
         setPath("bingo");
         setBingoWinner(msg);
+        console.log("here 7");
       });
     } catch (e) {
       console.log("error: ", e);
@@ -147,7 +153,7 @@ export default function Room() {
         <>
           <section className={styles.main}>
             <p>
-              Bem-vind@ {name} à sala {room}
+              Hosgeldiniz {name} oda: {room}
             </p>
             {name == undefined && (
               <JoinForm type="room" btnFunction={joinRoom} room={room} />
